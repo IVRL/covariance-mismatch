@@ -5,9 +5,9 @@
     <meta charset="utf-8">
     <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
     <!-- Replace the content tag with appropriate information -->
-    <meta name="description" content="Covariance Mismatch">
-    <meta property="og:title" content="Covariance Mismatch" />
-    <meta property="og:description" content="Covariance Mismatch" />
+    <meta name="description" content="Covariance Mismatch in Diffusion Models">
+    <meta property="og:title" content="Covariance Mismatch in Diffusion Models" />
+    <meta property="og:description" content="Covariance Mismatch in Diffusion Models" />
     <meta property="og:url" content="https://ivrl.github.io/covariance-mismatch/" />
     <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
     <meta property="og:image" content="static/images/banner.png" />
@@ -15,17 +15,17 @@
     <meta property="og:image:height" content="537" />
 
 
-    <meta name="twitter:title" content="Covariance Mismatch">
-    <meta name="twitter:description" content="Covariance Mismatch">
+    <meta name="twitter:title" content="Covariance Mismatch in Diffusion Models">
+    <meta name="twitter:description" content="Covariance Mismatch in Diffusion Models">
     <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
     <meta name="twitter:image" content="static/images/banner.png">
-    <meta name="twitter:card" content="Covariance Mismatch">
+    <meta name="twitter:card" content="Covariance Mismatch in Diffusion Models">
     <!-- Keywords for your paper to be indexed by-->
-    <meta name="keywords" content="Covariance mismatch">
+    <meta name="keywords" content="Diffusion models, Covariance mismatch">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-    <title>Covariance Mismatch</title>
+    <title>Covariance Mismatch in Diffusion Models</title>
     <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
     <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
 
@@ -54,7 +54,52 @@
             <div class="container is-max-desktop">
                 <div class="columns is-centered">
                     <div class="column has-text-centered">
-                        <h1 class="title is-1 publication-title">Covariance Mismatch</h1>
+                        <h1 class="title is-1 publication-title">Covariance Mismatch in Diffusion Models</h1>
+                        <div class="is-size-5 publication-authors">
+                            <!-- Paper authors -->
+                            <span class="author-block">
+                                <a href="https://martin-ev.github.io/" target="_blank">Martin Nicolas
+                                    Everaert</a>,
+                            </span>
+                            <span class="author-block">
+                                <a href="https://scholar.google.com/citations?user=EX3OYP4AAAAJ" target="_blank">Sabine
+                                    Süsstrunk</a>,
+                            </span>
+                            <span class="author-block">
+                                <a href="https://scholar.google.com/citations?user=lc2HaZwAAAAJ"
+                                    target="_blank">Radhakrishna
+                                    Achanta</a>
+                            </span>
+                        </div>
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block">
+                                Image and Visual Representation Lab (IVRL), EPFL, Switzerland
+                            </span>
+                        </div>
+
+                        <div class="column has-text-centered">
+                            <div class="publication-links">
+                                <!-- PDF link -->
+                                <span class="link-block">
+                                    <a href="https://infoscience.epfl.ch/assets/pdfjs/web/viewer.html?file=blob%3Ahttps%3A%2F%2Finfoscience.epfl.ch%2Fa7f09160-9dbd-4efb-95e9-5d94833977bc"
+                                        target="_blank" class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fas fa-file-pdf"></i>
+                                        </span>
+                                        <span>Preprint</span>
+                                    </a>
+                                </span>
+                                <span class="link-block">
+                                    <a href="https://infoscience.epfl.ch/assets/pdfjs/web/viewer.html?file=blob%3Ahttps%3A%2F%2Finfoscience.epfl.ch%2F16e99300-e444-4cbd-9cc2-7c90b5e95313"
+                                        target="_blank" class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fas fa-file-pdf"></i>
+                                        </span>
+                                        <span>Preprint with Appendix</span>
+                                    </a>
+                                </span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -66,12 +111,51 @@
         <div class="container is-max-desktop">
             <div class="columns is-centered has-text-centered">
                 <div class="column is-four-fifths">
-                    <h2 class="title is-3">Page under construction</h2>
+                    <h2 class="title is-3">Abstract</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                            Diffusion models are usually trained using isotropic noise. Yet, common data distributions
+                            are strongly anisotropic. We explain that this covariance mismatch negatively impacts the
+                            model in several ways. It leads to the model predicting only the high-variance components at
+                            high noise levels and only the low-variance components at low noise levels, requiring a wide
+                            range of noise levels during training and inference to model all components accurately. This
+                            partition of components across noise levels also prevents smaller timesteps from correcting
+                            predictions of larger timesteps, and limits diffusion editing to only low-variance
+                            components. We show two approaches to realign the noise and data covariances: whitening the
+                            data distribution or coloring the noise distribution. We apply our approach on 2D point
+                            distributions and, using a Fourier-based approach, on images. Realigning covariances allows
+                            the model to focus more equally on all components, improving editing and enabling fewer
+                            noise levels in training. Models trained with realigned covariances offer greater
+                            flexibility in the choice of timesteps during inference and can even generate reasonable
+                            output while being trained on just a single timestep.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
     <!-- End paper abstract -->
+
+    <!--BibTex citation -->
+    <section class="section" id="BibTeX">
+        <div class="container content">
+            <div class="columns is-centered has-text-centered">
+                <h2 class="title is-3">Citation</h2>
+            </div>
+            <div class="container is-max-desktop">
+                <pre><code>
+@article{everaert2024covariancemismatch,
+    author   = {Everaert, Martin Nicolas and Süsstrunk, Sabine and Achanta, Radhakrishna},
+    title    = {{C}ovariance {M}ismatch in {D}iffusion {M}odels}, 
+    journal  = {Infoscience preprint Infoscience:20.500.14299/242173},
+    month    = {November},
+    year     = {2024},
+    url      = {<a href="https://infoscience.epfl.ch/handle/20.500.14299/242173" target="_blank">https://infoscience.epfl.ch/handle/20.500.14299/242173</a>},
+}</code></pre>
+            </div>
+        </div>
+    </section>
+    <!--End BibTex citation -->
 
 
     <footer class="footer">
