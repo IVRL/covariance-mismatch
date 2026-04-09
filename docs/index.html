@@ -1,209 +1,388 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
-    <!-- Replace the content tag with appropriate information -->
-    <meta name="description"
-        content="We identify a covariance mismatch between the data and the noise distributions in diffusion models. Due to this mismatch, noise affects some components of the data distribution much more than others during training. By realigning these covariances, we improve the model's flexibility and enable better generation.">
-    <meta property="og:title" content="Covariance Mismatch in Diffusion Models" />
-    <meta property="og:description"
-        content="We identify a covariance mismatch between the data and the noise distributions in diffusion models. Due to this mismatch, noise affects some components of the data distribution much more than others during training. By realigning these covariances, we improve the model's flexibility and enable better generation." />
-    <meta property="og:url" content="https://ivrl.github.io/covariance-mismatch/" />
-    <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
-    <meta property="og:image" content="static/images/banner.png" />
-    <meta property="og:image:width" content="1364" />
-    <meta property="og:image:height" content="537" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <!-- Primary Meta Tags -->
+  <meta name="title" content="Covariance Mismatch in Diffusion Models - Everaert et al.">
+  <meta name="description" content="We identify a covariance mismatch between the data and the noise distributions in diffusion models. Due to this mismatch, noise affects some components of the data distribution much more than others during training. By realigning these covariances, we improve the model's flexibility and enable better generation.">
+  <meta name="keywords" content="Diffusion models, Covariance mismatch, machine learning, computer vision, AI">
+  <meta name="author" content="Martin Nicolas Everaert, Sabine Süsstrunk, Radhakrishna Achanta">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="IVRL - EPFL">
+  <meta property="og:title" content="Covariance Mismatch in Diffusion Models - Everaert et al.">
+  <meta property="og:description" content="We identify a covariance mismatch between the data and the noise distributions in diffusion models. Due to this mismatch, noise affects some components of the data distribution much more than others during training. By realigning these covariances, we improve the model's flexibility and enable better generation.">
+  <meta property="og:url" content="https://ivrl.github.io/covariance-mismatch/">
+  <meta property="og:image" content="https://ivrl.github.io/covariance-mismatch/static/images/banner.png">
+  <meta property="og:image:width" content="1364">
+  <meta property="og:image:height" content="537">
+  <meta property="og:image:alt" content="Covariance Mismatch in Diffusion Models">
+  <meta property="article:published_time" content="2024-11-27T00:00:00.000Z">
+  <meta property="article:author" content="Martin Nicolas Everaert">
+  <meta property="article:section" content="Research">
+  <meta property="article:tag" content="diffusion models">
+  <meta property="article:tag" content="covariance mismatch">
 
-    <meta name="twitter:title" content="Covariance Mismatch in Diffusion Models">
-    <meta name="twitter:description" content="Covariance Mismatch in Diffusion Models">
-    <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
-    <meta name="twitter:image" content="static/images/banner.png">
-    <meta name="twitter:card"
-        content="We identify a covariance mismatch between the data and the noise distributions in diffusion models. Due to this mismatch, noise affects some components of the data distribution much more than others during training. By realigning these covariances, we improve the model's flexibility and enable better generation.">
-    <!-- Keywords for your paper to be indexed by-->
-    <meta name="keywords" content="Diffusion models, Covariance mismatch">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- TODO: Replace with your lab/institution Twitter handle
+  <meta name="twitter:site" content="@YOUR_TWITTER_HANDLE">  -->
+  <meta name="twitter:creator" content="@EveraertMartin">
+  <meta name="twitter:title" content="Covariance Mismatch in Diffusion Models - Everaert et al.">
+  <meta name="twitter:description" content="We identify a covariance mismatch between the data and the noise distributions in diffusion models. Due to this mismatch, noise affects some components of the data distribution much more than others during training. By realigning these covariances, we improve the model's flexibility and enable better generation.">
+  <meta name="twitter:image" content="https://ivrl.github.io/covariance-mismatch/static/images/banner.png">
+  <meta name="twitter:image:alt" content="Covariance Mismatch in Diffusion Models">
 
-
-    <title>Covariance Mismatch in Diffusion Models</title>
-    <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
-    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
-
-    <link rel="stylesheet" href="static/css/bulma.min.css">
+  <!-- Academic/Research Specific -->
+  <meta name="citation_title" content="Covariance Mismatch in Diffusion Models">
+  <meta name="citation_author" content="Everaert, Martin Nicolas">
+  <meta name="citation_author" content="Süsstrunk, Sabine">
+  <meta name="citation_author" content="Achanta, Radhakrishna">
+  <meta name="citation_publication_date" content="2024">
+  <meta name="citation_conference_title" content="Infoscience preprint">
+  <meta name="citation_pdf_url" content="https://infoscience.epfl.ch/bitstreams/a00aad1c-bfdc-4c4d-866a-c05ac2255d3b/download">
+  
+  <!-- Additional SEO -->
+  <meta name="theme-color" content="#2563eb">
+  <meta name="msapplication-TileColor" content="#2563eb">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://ajax.googleapis.com">
+  <link rel="preconnect" href="https://documentcloud.adobe.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  
+  <title>Covariance Mismatch in Diffusion Models</title>
+  
+  <!-- Favicon and App Icons 
+  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+  <link rel="apple-touch-icon" href="static/images/favicon.ico"> -->
+  
+  <!-- Critical CSS - Load synchronously -->
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+  
+  <!-- Non-critical CSS - Load asynchronously -->
+  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  
+  <!-- Fallback for browsers that don't support preload -->
+  <noscript>
     <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
     <link rel="stylesheet" href="static/css/bulma-slider.min.css">
     <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-    <link rel="stylesheet" href="static/css/index.css">
+  </noscript>
+  
+  <!-- Fonts - Optimized loading -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Defer non-critical JavaScript -->
+  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script defer src="static/js/bulma-carousel.min.js"></script>
+  <script defer src="static/js/bulma-slider.min.js"></script>
+  <script defer src="static/js/index.js"></script>
+  
+  <!-- Structured Data for Academic Papers -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "Covariance Mismatch in Diffusion Models",
+    "description": "We identify a covariance mismatch between the data and the noise distributions in diffusion models. Due to this mismatch, noise affects some components of the data distribution much more than others during training. By realigning these covariances, we improve the model's flexibility and enable better generation.",
+    "author": [
+      {
+        "@type": "Person",
+        "name": "Martin Nicolas Everaert",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "EPFL"
+        }
+      },
+      {
+        "@type": "Person",
+        "name": "Sabine Süsstrunk",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "EPFL"
+        }
+      },
+      {
+        "@type": "Person",
+        "name": "Radhakrishna Achanta",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "EPFL"
+        }
+      }
+    ],
+    "datePublished": "2024-11-27",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Infoscience preprint"
+    },
+    "url": "https://ivrl.github.io/covariance-mismatch/",
+    "image": "https://ivrl.github.io/covariance-mismatch/static/images/banner.png",
+    "keywords": ["text-to-image", "vocabulary expansion", "textual inversion", "stable diffusion", "CLIP", "text encoder", "concept learning", "machine learning", "computer vision"],
+    "abstract": "Diffusion models are usually trained using isotropic noise. Yet, common data distributions are strongly anisotropic. We explain that this covariance mismatch negatively impacts the model in several ways. It leads to the model predicting only the high-variance components at high noise levels and only the low-variance components at low noise levels, requiring a wide range of noise levels during training and inference to model all components accurately. This partition of components across noise levels also prevents smaller timesteps from correcting predictions of larger timesteps, and limits diffusion editing to only low-variance components. We show two approaches to realign the noise and data covariances: whitening the data distribution or coloring the noise distribution. We apply our approach on 2D point distributions and, using a Fourier-based approach, on images. Realigning covariances allows the model to focus more equally on all components, improving editing and enabling fewer noise levels in training. Models trained with realigned covariances offer greater flexibility in the choice of timesteps during inference and can even generate reasonable output while being trained on just a single timestep.",
+    "isAccessibleForFree": true
+  }
+  </script>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
-    <script defer src="static/js/fontawesome.all.min.js"></script>
-    <script src="static/js/bulma-carousel.min.js"></script>
-    <script src="static/js/bulma-slider.min.js"></script>
-    <script src="static/js/index.js"></script>
-
-    <!--  <meta name="google-site-verification" content="ohByZQJx9EYQ7Po92WxVz1fvVDkQqgI6U5wQZ_7mKBY" />-->
-    <meta name="google-site-verification" content="ohByZQJx9EYQ7Po92WxVz1fvVDkQqgI6U5wQZ_7mKBY" />
+  <!-- Website/Organization Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "IVRL - EPFL",
+    "url": "https://www.epfl.ch/labs/ivrl/"
+  }
+  </script>
+  
+  <meta name="google-site-verification" content="ohByZQJx9EYQ7Po92WxVz1fvVDkQqgI6U5wQZ_7mKBY" />
 </head>
 
 <body>
 
 
-    <section class="hero">
-        <div class="hero-body">
-            <div class="container is-max-desktop">
-                <div class="columns is-centered">
-                    <div class="column has-text-centered">
-                        <h1 class="title is-1 publication-title">Covariance Mismatch in Diffusion Models</h1>
-                        <div class="is-size-5 publication-authors">
-                            <!-- Paper authors -->
-                            <span class="author-block">
-                                <a href="https://martin-ev.github.io/" target="_blank">Martin Nicolas
-                                    Everaert</a>,
-                            </span>
-                            <span class="author-block">
-                                <a href="https://scholar.google.com/citations?user=EX3OYP4AAAAJ" target="_blank">Sabine
-                                    Süsstrunk</a>,
-                            </span>
-                            <span class="author-block">
-                                <a href="https://scholar.google.com/citations?user=lc2HaZwAAAAJ"
-                                    target="_blank">Radhakrishna
-                                    Achanta</a>
-                            </span>
-                        </div>
-                        <div class="is-size-5 publication-authors">
-                            <span class="author-block">
-                                Image and Visual Representation Lab (IVRL), EPFL, Switzerland
-                            </span>
-                        </div>
+  <!-- Scroll to Top Button -->
+  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
 
-                        <div class="column has-text-centered">
-                            <div class="publication-links">
-                                <!-- PDF link -->
-                                <span class="link-block">
-                                    <a href="https://infoscience.epfl.ch/bitstreams/a00aad1c-bfdc-4c4d-866a-c05ac2255d3b/download"
-                                        target="_blank" class="external-link button is-normal is-rounded is-dark">
-                                        <span class="icon">
-                                            <i class="fas fa-file-pdf"></i>
-                                        </span>
-                                        <span>Preprint</span>
-                                    </a>
-                                </span>
-                                <!-- PDF link  suppl -->
-                                <span class="link-block">
-                                    <a href="https://infoscience.epfl.ch/bitstreams/72923daf-0e38-4b3c-8ad8-96799be59469/download"
-                                        target="_blank" class="external-link button is-normal is-rounded is-dark">
-                                        <span class="icon">
-                                            <i class="fas fa-file-pdf"></i>
-                                        </span>
-                                        <span>Preprint with Appendix</span>
-                                    </a>
-                                </span>
-                            </div>
-                        </div>
-                        
-                        <div class="column has-text-centered">
-                            <div class="publication-links">
-                                <!-- HF link -->
-                                <span class="link-block">
-                                    <a href="https://huggingface.co/collections/EPFL-IVRL/covariance-mismatch-in-diffusion-models-67fd225d15442706079e58d0"
-                                        target="_blank" class="external-link button is-normal is-rounded is-dark">
-                                        <span class="icon">
-                                            <i class="fas fa-external-link-alt"></i>
-                                        </span>
-                                        <span>Models (HuggingFace)</span>
-                                    </a>
-                                </span>
-                                <!-- Github link  -->
-                                <span class="link-block">
-                                    <a href="https://github.com/IVRL/covariance-mismatch"
-                                        target="_blank" class="external-link button is-normal is-rounded is-dark">
-                                        <span class="icon">
-                                            <i class="fab fa-github"></i>
-                                        </span>
-                                        <span>Code (coming soon)</span>
-                                    </a>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
+  <!-- More Works Dropdown -->
+  <div class="more-works-container">
+    <button class="more-works-btn" onclick="toggleMoreWorks()" title="View More Works">
+      <i class="fas fa-flask"></i>
+      More Works
+      <i class="fas fa-chevron-down dropdown-arrow"></i>
+    </button>
+    <div class="more-works-dropdown" id="moreWorksDropdown">
+      <div class="dropdown-header">
+        <h4>More Works</h4>
+        <button class="close-btn" onclick="toggleMoreWorks()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="works-list">
+        <a href="https://martin-ev.github.io/vgoq" class="work-item" target="_blank">
+          <div class="work-info">
+            <h5>Visual Grounding for Object Questions</h5>
+            <p>Introduces Visual Grounding for Object Questions (VGOQ), a new task for grounding visual evidence or context that supports answering general questions about objects, beyond directly visible elements.</p>
+            <span class="work-venue">To appear in CVPR 2026</span>
+          </div>
+          <i class="fas fa-external-link-alt"></i>
+        </a>
+        <a href="https://ivrl.github.io/signal-leak-bias/" class="work-item" target="_blank">
+          <div class="work-info">
+            <h5>Exploiting the Signal-Leak Bias in Diffusion Models</h5>
+            <p>Examines and leverages the signal-leak bias in diffusion models for improved image generation.</p>
+            <span class="work-venue">WACV 2024</span>
+          </div>
+          <i class="fas fa-external-link-alt"></i>
+        </a>
+        <a href="https://ivrl.github.io/diffusion-in-style/" class="work-item" target="_blank">
+          <div class="work-info">
+            <h5>Diffusion in Style</h5>
+            <p>Customizes Stable Diffusion's output style by adapting the initial noise distribution, making style transfer more sample-efficient and faster.</p>
+            <span class="work-venue">ICCV 2023</span>
+          </div>
+          <i class="fas fa-external-link-alt"></i>
+        </a>
+        <a href="https://ivrl.github.io/vetim/" class="work-item" target="_blank">
+          <div class="work-info">
+            <h5>VETIM: Expanding the Vocabulary of Text-to-Image Models only with Text</h5>
+            <p>Expands text-to-image models' vocabulary by learning new token embeddings from textual descriptions alone, without requiring sample images.</p>
+            <span class="work-venue">BMVC 2023</span>
+          </div>
+          <i class="fas fa-external-link-alt"></i>
+        </a>
+        <a href="https://ivrl.github.io/ComicsDepth/" class="work-item" target="_blank">
+          <div class="work-info">
+            <h5>Estimating Image Depth in the Comics Domain</h5>
+            <p>Estimates depth in comic book images by converting them to natural images and filtering out text to improve accuracy.</p>
+            <span class="work-venue">WACV 2022</span>
+          </div>
+          <i class="fas fa-external-link-alt"></i>
+        </a>
+        <a href="https://arxiv.org/abs/2006.02333" class="work-item" target="_blank">
+          <div class="work-info">
+            <h5>Scene Relighting with Illumination Estimation in the Latent Space</h5>
+            <p>Transfers lighting conditions between images by estimating and manipulating illumination in the latent space of an encoder-decoder network.</p>
+            <span class="work-venue">arXiv 2020</span>
+          </div>
+          <i class="fas fa-external-link-alt"></i>
+        </a>
+        <a href="https://www.epfl.ch/labs/ivrl" class="work-item" target="_blank">
+          <div class="work-info">
+            <h5>More works from Image and Visual Representation Lab (IVRL)</h5>
+            <p>Also check more works from our labmates at the Image and Visual Representation Lab (IVRL) at EPFL.</p>
+            <span class="work-venue">IVRL - EPFL</span>
+          </div>
+          <i class="fas fa-external-link-alt"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <main id="main-content">
+    <section class="hero">
+      <div class="hero-body">
+        <div class="container is-max-desktop">
+          <div class="columns is-centered">
+            <div class="column has-text-centered">
+              <h1 class="title is-1 publication-title">Covariance Mismatch in Diffusion Models</h1>
+              <div class="is-size-5 publication-authors">
+                <span class="author-block">
+                  <a href="https://martin-ev.github.io/" target="_blank">Martin Nicolas Everaert</a>,
+                </span>
+                <span class="author-block">
+                  <a href="https://scholar.google.com/citations?user=EX3OYP4AAAAJ" target="_blank">Sabine Süsstrunk</a>,
+                </span>
+                <span class="author-block">
+                  <a href="https://scholar.google.com/citations?user=lc2HaZwAAAAJ" target="_blank">Radhakrishna Achanta</a>
+                </span>
+              </div>
+              <div class="is-size-5 publication-authors">
+                <span class="author-block">
+                  Image and Visual Representation Lab (IVRL), EPFL, Switzerland
+                </span>
+              </div>
+
+              <div class="column has-text-centered">
+                <div class="publication-links">
+                  <span class="link-block">
+                    <a href="https://infoscience.epfl.ch/handle/20.500.14299/242173" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="fas fa-external-link-alt"></i>
+                      </span>
+                      <span>Infoscience</span>
+                    </a>
+                  </span>
+                  <span class="link-block">
+                    <a href="https://infoscience.epfl.ch/bitstreams/a00aad1c-bfdc-4c4d-866a-c05ac2255d3b/download"
+ target="_blank" class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="fas fa-file-pdf"></i>
+                      </span>
+                      <span>Preprint</span>
+                    </a>
+                  </span>
+                  <span class="link-block">
+                    <a href="https://infoscience.epfl.ch/bitstreams/72923daf-0e38-4b3c-8ad8-96799be59469/download" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="fas fa-file-pdf"></i>
+                      </span>
+                      <span>Preprint with Appendix</span>
+                    </a>
+                  </span>
+                  <span class="link-block">
+                    <a href="https://huggingface.co/collections/EPFL-IVRL/covariance-mismatch-in-diffusion-models-67fd225d15442706079e58d0" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="fas fa-external-link-alt"></i>
+                      </span>
+                      <span>Models (HuggingFace)</span>
+                    </a>
+                  </span>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Paper abstract -->
     <section class="section hero is-light">
-        <div class="container is-max-desktop">
-            <div class="columns is-centered has-text-centered">
-                <div class="column is-four-fifths">
-                    <h2 class="title is-3">Abstract</h2>
-                    <div class="content has-text-justified">
-                        <p>
-                            Diffusion models are usually trained using isotropic noise. Yet, common data distributions
-                            are strongly anisotropic. We explain that this covariance mismatch negatively impacts the
-                            model in several ways. It leads to the model predicting only the high-variance components at
-                            high noise levels and only the low-variance components at low noise levels, requiring a wide
-                            range of noise levels during training and inference to model all components accurately. This
-                            partition of components across noise levels also prevents smaller timesteps from correcting
-                            predictions of larger timesteps, and limits diffusion editing to only low-variance
-                            components. We show two approaches to realign the noise and data covariances: whitening the
-                            data distribution or coloring the noise distribution. We apply our approach on 2D point
-                            distributions and, using a Fourier-based approach, on images. Realigning covariances allows
-                            the model to focus more equally on all components, improving editing and enabling fewer
-                            noise levels in training. Models trained with realigned covariances offer greater
-                            flexibility in the choice of timesteps during inference and can even generate reasonable
-                            output while being trained on just a single timestep.
-                        </p>
-                    </div>
-                </div>
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">Abstract</h2>
+            <div class="content has-text-justified">
+              <p>
+                Diffusion models are usually trained using isotropic noise. Yet, common data distributions
+                are strongly anisotropic. We explain that this covariance mismatch negatively impacts the
+                model in several ways. It leads to the model predicting only the high-variance components at
+                high noise levels and only the low-variance components at low noise levels, requiring a wide
+                range of noise levels during training and inference to model all components accurately. This
+                partition of components across noise levels also prevents smaller timesteps from correcting
+                predictions of larger timesteps, and limits diffusion editing to only low-variance
+                components. We show two approaches to realign the noise and data covariances: whitening the
+                data distribution or coloring the noise distribution. We apply our approach on 2D point
+                distributions and, using a Fourier-based approach, on images. Realigning covariances allows
+                the model to focus more equally on all components, improving editing and enabling fewer
+                noise levels in training. Models trained with realigned covariances offer greater
+                flexibility in the choice of timesteps during inference and can even generate reasonable
+                output while being trained on just a single timestep.
+              </p>
             </div>
+          </div>
         </div>
+      </div>
     </section>
     <!-- End paper abstract -->
-
     <!--BibTex citation -->
-    <section class="section" id="BibTeX">
-        <div class="container content">
-            <div class="columns is-centered has-text-centered">
-                <h2 class="title is-3">Citation</h2>
+    <section class="hero is-small" id="BibTeX">
+      <div class="hero-body">
+        <div class="container is-max-desktop content">
+          <div class="columns is-centered">
+            <div class="column is-four-fifths">
+              <div class="bibtex-header" style="position: relative; align-items: flex-start;">
+                <h2 class="title is-3" style="flex: 1; text-align: center;">Citation</h2>
+                <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
+                  <i class="fas fa-copy"></i>
+                  <span class="copy-text">Copy</span>
+                </button>
+              </div>
+              <div class="content has-text-justified">
+                <p>Please use the following BibTeX entry to cite our paper:</p>
+              </div>
             </div>
-            <div class="container is-max-desktop">
-                <pre><code>
-@article{everaert2024covariancemismatch,
-    author   = {Everaert, Martin Nicolas and Süsstrunk, Sabine and Achanta, Radhakrishna},
-    title    = {{C}ovariance {M}ismatch in {D}iffusion {M}odels}, 
-    journal  = {Infoscience preprint Infoscience:20.500.14299/242173},
-    month    = {November},
-    year     = {2024},
-    url      = {<a href="https://infoscience.epfl.ch/handle/20.500.14299/242173" target="_blank">https://infoscience.epfl.ch/handle/20.500.14299/242173</a>},
+          </div>
+          <pre id="bibtex-code"><code>@article{everaert2024covariancemismatch,
+  title    = {{C}ovariance {M}ismatch in {D}iffusion {M}odels},
+  author   = {Everaert, Martin Nicolas and S\"usstrunk, Sabine and Achanta, Radhakrishna},
+  journal  = {Infoscience preprint Infoscience:20.500.14299/242173},
+  month    = {November},
+  year     = {2024},
+  url      = {https://infoscience.epfl.ch/handle/20.500.14299/242173},
 }</code></pre>
-            </div>
         </div>
+      </div>
     </section>
     <!--End BibTex citation -->
-
-
-    <footer class="footer">
-        <div class="container">
-            <div class="columns is-centered">
-                <div class="column is-8">
-                    <div class="content">
-                        <p>
-                            This page was built using the <a
-                                href="https://github.com/eliahuhorwitz/Academic-project-page-template"
-                                target="_blank">Academic Project Page Template</a>.
-                        </p>
-                    </div>
-                </div>
-            </div>
+  </main>
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template"
+                target="_blank">Academic Project Page Template</a> which was adopted from the <a
+                href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+            </p>
+          </div>
         </div>
-    </footer>
+      </div>
+    </div>
+  </footer>
 
 </body>
-
 </html>
